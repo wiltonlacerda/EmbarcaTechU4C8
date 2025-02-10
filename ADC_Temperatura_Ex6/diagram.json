@@ -1,0 +1,84 @@
+{
+  "version": 1,
+  "author": "Wilton Lacerda Silva",
+  "editor": "wokwi",
+  "parts": [
+    {
+      "type": "board-pi-pico-w",
+      "id": "pico",
+      "top": 6.35,
+      "left": 61.15,
+      "attrs": { "builder": "pico-sdk" }
+    },
+    {
+      "type": "wokwi-led",
+      "id": "led1",
+      "top": 172,
+      "left": -85,
+      "rotate": 270,
+      "attrs": { "color": "red" }
+    },
+    {
+      "type": "wokwi-led",
+      "id": "led2",
+      "top": 143.2,
+      "left": -85,
+      "rotate": 270,
+      "attrs": { "color": "blue" }
+    },
+    {
+      "type": "wokwi-led",
+      "id": "led3",
+      "top": 114.4,
+      "left": -85,
+      "rotate": 270,
+      "attrs": { "color": "green" }
+    },
+    {
+      "type": "wokwi-resistor",
+      "id": "r1",
+      "top": 128.75,
+      "left": -28.8,
+      "attrs": { "value": "1000" }
+    },
+    {
+      "type": "wokwi-resistor",
+      "id": "r2",
+      "top": 157.55,
+      "left": -28.8,
+      "attrs": { "value": "1000" }
+    },
+    {
+      "type": "wokwi-resistor",
+      "id": "r3",
+      "top": 186.35,
+      "left": -28.8,
+      "attrs": { "value": "1000" }
+    },
+    {
+      "type": "wokwi-potentiometer",
+      "id": "pot1",
+      "top": 10.6,
+      "left": -87.7,
+      "rotate": 270,
+      "attrs": {}
+    }
+  ],
+  "connections": [
+    [ "pico:GP0", "$serialMonitor:RX", "", [] ],
+    [ "pico:GP1", "$serialMonitor:TX", "", [] ],
+    [ "r1:2", "pico:GP11", "green", [ "v0" ] ],
+    [ "led1:C", "pico:GND.4", "black", [ "h19.2", "v-0.4", "h76.8", "v-28.84" ] ],
+    [ "pico:GP12", "r2:2", "blue", [ "h0" ] ],
+    [ "r3:2", "pico:GP13", "red", [ "v0" ] ],
+    [ "r3:1", "led1:A", "red", [ "h-19.2", "v19.2" ] ],
+    [ "r2:1", "led2:A", "blue", [ "v0" ] ],
+    [ "r1:1", "led3:A", "green", [ "v0" ] ],
+    [ "led3:C", "pico:GND.4", "black", [ "h28.8", "v57.2", "h67.2", "v-19.24" ] ],
+    [ "led2:C", "pico:GND.4", "black", [ "h28.8", "v28.4", "h67.2", "v-19.24" ] ],
+    [ "pot1:VCC", "pico:3V3", "red", [ "v-37.6", "h172.8", "v57.6" ] ],
+    [ "pot1:GND", "pico:GND.2", "black", [ "h28.8", "v28.8" ] ],
+    [ "pico:GP27", "pot1:SIG", "green", [ "h29.11", "v-105.6", "h-134.4", "v57.6" ] ]
+  ],
+  "dependencies": {}
+}

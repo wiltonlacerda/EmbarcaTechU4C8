@@ -1,0 +1,67 @@
+{
+  "version": 1,
+  "author": "Wilton L. Silva",
+  "editor": "wokwi",
+  "parts": [
+    {
+      "type": "board-pi-pico-w",
+      "id": "pico",
+      "top": -70.45,
+      "left": -6.05,
+      "attrs": { "builder": "pico-sdk" }
+    },
+    {
+      "type": "wokwi-resistor",
+      "id": "r1",
+      "top": 71.15,
+      "left": -86.4,
+      "attrs": { "value": "1000" }
+    },
+    {
+      "type": "wokwi-rgb-led",
+      "id": "rgb1",
+      "top": 47,
+      "left": -162.9,
+      "rotate": 270,
+      "attrs": { "common": "cathode" }
+    },
+    {
+      "type": "wokwi-resistor",
+      "id": "r2",
+      "top": 80.75,
+      "left": -86.4,
+      "attrs": { "value": "1000" }
+    },
+    {
+      "type": "wokwi-resistor",
+      "id": "r3",
+      "top": 90.35,
+      "left": -86.4,
+      "attrs": { "value": "1000" }
+    },
+    {
+      "type": "wokwi-analog-joystick",
+      "id": "joystick1",
+      "top": -135,
+      "left": 101.4,
+      "attrs": {}
+    }
+  ],
+  "connections": [
+    [ "pico:GP0", "$serialMonitor:RX", "", [] ],
+    [ "pico:GP1", "$serialMonitor:TX", "", [] ],
+    [ "rgb1:COM", "pico:GND.4", "black", [ "h9.2", "v19.06" ] ],
+    [ "rgb1:R", "r3:1", "red", [ "h19.2", "v-9.6" ] ],
+    [ "r3:2", "pico:GP13", "red", [ "v0" ] ],
+    [ "r2:2", "pico:GP12", "blue", [ "v0" ] ],
+    [ "r1:2", "pico:GP11", "green", [ "v0" ] ],
+    [ "rgb1:B", "r2:1", "blue", [ "h28.8", "v17.6" ] ],
+    [ "rgb1:G", "r1:1", "green", [ "v0" ] ],
+    [ "pico:3V3", "joystick1:VCC", "magenta", [ "h29.11", "v19.2", "h38.4" ] ],
+    [ "joystick1:GND", "pico:GND.5", "black", [ "v0" ] ],
+    [ "joystick1:SEL", "pico:GP22", "gray", [ "v0" ] ],
+    [ "joystick1:HORZ", "pico:GP26", "gold", [ "v0" ] ],
+    [ "joystick1:VERT", "pico:GP27", "orange", [ "v0" ] ]
+  ],
+  "dependencies": {}
+}

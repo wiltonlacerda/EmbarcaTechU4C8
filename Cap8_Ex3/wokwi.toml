@@ -1,0 +1,4 @@
+[wokwi]
+version = 1
+firmware = 'build/Cap8_Ex3.uf2'
+elf = 'build/Cap8_Ex3.elf'
